@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <malloc.h>
+#include <sstream>
+#include <math.h>
 
 using namespace std;
 
@@ -25,7 +26,7 @@ class Conversao{
 			x++;
 			cont++;
 		}
-		cout << " VALOR: ";
+		cout << "  VALOR EM BINÁRIO: ";
 		for(int x = cont-1; x >= 0; x--){
 			cout << "" << decimalBin[x];
 		}
@@ -34,51 +35,19 @@ class Conversao{
 	
 	//Função para Conversão de Decimal para Hexadecimal
 	void decimalHexadecimal(int valor){
-		int *decimalHex = new int[valor];
-		string vetor = "";
+		//int *decimalHex = new int[valor];
+		/*string vetor;
 		int x, cont = 0;
-		while(valor != 0){
+		do{
 			decimalHex[x] = valor%16;
 			valor = valor/16;
 			x++;
 			cont++;
-		}
+		}while(valor != 0);*/
 
-		
 		/*for(int x = cont-1; x >= 0; x--){
-			cout << "OI" << endl;
-			vetor = 48+decimalHex[x];
-			cout << "NOW " << vetor[x] << endl;
-		}*/
-
-		for(int x = 0; x < cont; x++){
-			if(decimalHex[x] == 10)
-				decimalHex[x] = 'a';
-			else{
-				if(decimalHex[x] == 11)
-					decimalHex[x] = 'b';
-				else{
-					if(decimalHex[x] == 12)
-						decimalHex[x] = 'c';
-					else{
-						if(decimalHex[x] == 13)
-							(string)decimalHex[x] = (string)'d';
-						else{
-							if(decimalHex[x] == 14)
-								decimalHex[x] = 'e';
-							else{
-								if(decimalHex[x] == 15)
-									decimalHex[x] = 'f';
-							}
-						}
-					}
-				}
-			}
-		}
-
-		for(int x = cont-1; x >= 0; x--){
 			cout << " " << decimalHex[x];
-		}
+		}*/
 	};
 
 	//Função para Conversão de Decimal para Octal
@@ -91,10 +60,34 @@ class Conversao{
 			x++;
 			cont++;
 		}
-		cout << " VALOR: ";
+		cout << "  VALOR EM OCTAL: ";
 		for(int x = cont-1; x >= 0; x--){
 			cout << "" << decimalOct[x];
 		}
 	}
+
+
+	//Função para Conversão de Binário para Decimal
+	void binarioDecimal(string valor1){
+		int deci = 0, valorDec = 0, teste = 0, armazena;
+		int tamanho =  valor1.length();
+		string recebe;
+		for(int x = tamanho-1; x >= 0; x--){
+			recebe += valor1[x];
+		}
+
+		for(int x = tamanho-1; x >= 0; x--){
+			deci = pow(2, x);
+			if((int)recebe[x] == 48)
+				armazena = 0;
+			else{
+				if((int)recebe[x] == 49)
+				armazena = 1;
+			}
+			teste = deci*armazena;
+			valorDec = valorDec + teste;
+		}
+		cout << "  VALOR EM DECIMAL: " << valorDec;
+	};
 		
 };
