@@ -6,18 +6,17 @@ using namespace std;
 int main(int argc, char const *argv[]){
 	int op, valor;
 	string valor1;
-
 	Conversao *conversao = new Conversao();
     do{
         cout << endl << "-----------------------------------------------------------------------" << endl;
         cout << "\t MENU DE OPÇÕES" << endl;
         cout << "-----------------------------------------------------------------------" << endl;
-        cout << "  1 -- DECIMAL PARA BINÁRIO       |   7  -- HEXADECIMAL PARA DECIMAL" << endl;
-        cout << "  2 -- DECIMAL PARA HEXADECIMAL   |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
-        cout << "  3 -- DECIMAL PARA OCTAL         |   9  -- HEXADECIMAL PARA OCTAL" << endl;
-        cout << "  4 -- BINÁRIO PARA DECIMAL       |   10 -- OCTAL PARA DECIMAL" << endl;
-        cout << "  5 -- BINÁRIO PARA HEXADECIMAL   |   11 -- OCTAL PARA HEXADECIMAL" << endl;
-        cout << "  6 -- BINÁRIO PARA OCTAL         |   12 -- OCTAL PARA BINÁRIO" << endl;
+        cout << "  1 -- DECIMAL PARA BINÁRIO      ok |   7  -- HEXADECIMAL PARA DECIMAL" << endl;
+        cout << "  2 -- DECIMAL PARA HEXADECIMAL     |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
+        cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL" << endl;
+        cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL" << endl;
+        cout << "  5 -- BINÁRIO PARA HEXADECIMAL     |   11 -- OCTAL PARA HEXADECIMAL" << endl;
+        cout << "  6 -- BINÁRIO PARA OCTAL           |   12 -- OCTAL PARA BINÁRIO" << endl;
         cout << "  0 -- SAIR " << endl;
         cout << "-----------------------------------------------------------------------" << endl;
         cout << "  OPÇÃO: ";
@@ -83,8 +82,11 @@ int main(int argc, char const *argv[]){
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE HEXADECIMAL X DECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->hexadecimalDecimal();
-                cout << endl;
+                cout << "  INFORME UM VALOR EM HEXADECIMAL: ";
+                cin >> valor1;                
+                cout << "-------------------------------------------------------" << endl;
+                conversao->hexadecimalDecimal(valor1);
+                cout << endl << endl;
                 break;
             case 8:
             	cout << "-------------------------------------------------------" << endl;

@@ -35,19 +35,38 @@ class Conversao{
 	
 	//Função para Conversão de Decimal para Hexadecimal
 	void decimalHexadecimal(int valor){
-		//int *decimalHex = new int[valor];
-		/*string vetor;
+		int *decimalHex = new int[valor];
 		int x, cont = 0;
-		do{
+
+		while(valor != 0){
 			decimalHex[x] = valor%16;
 			valor = valor/16;
 			x++;
 			cont++;
-		}while(valor != 0);*/
+		}
 
-		/*for(int x = cont-1; x >= 0; x--){
-			cout << " " << decimalHex[x];
-		}*/
+		cout << "  VALOR EM HEXADECIMAL: ";
+		for(int x = cont-1; x >= 0; x--){
+			/*switch(decimalHex[x]){
+				case 10:
+					decimalHex[x] = 'a';
+					break;
+				case 11:
+
+					break;
+				case 12:
+					break;
+				case 13:
+					break;
+				case 14:
+					(char)decimalHex[x] = 'e';
+					break;
+				case 15:
+					break;
+
+			}*/
+			cout << "" << decimalHex[x];
+		}
 	};
 
 	//Função para Conversão de Decimal para Octal
@@ -88,6 +107,57 @@ class Conversao{
 			valorDec = valorDec + teste;
 		}
 		cout << "  VALOR EM DECIMAL: " << valorDec;
+	};
+
+	//Função para Conversão de Hexadecimal para Decimal
+	void  hexadecimalDecimal(string valor1){
+		int tamanho =  valor1.length();
+		int hexa = 0, armazena, resultado = 0, valorHex = 0;
+		string recebe;
+
+		for(int x = tamanho-1; x >= 0; x--){
+			recebe += valor1[x];
+			cout << "" << x << " RECEBE: " << recebe[x] << endl;
+		}
+
+		for(int x = tamanho-1; x >= 0; x--){
+			hexa = pow(16, x);
+			
+			if(valor1[x] == 'a')
+				armazena = 10;
+			else{
+				if(valor1[x] == 'b')
+					armazena == 11;
+				else{
+					if(valor1[x] == 'c')
+						armazena == 12;
+					else{
+						if(valor1[x] == 'd')
+							armazena == 13;
+						else{
+							if(valor1[x] == 'e')
+								armazena == 14;
+							else{
+								if(valor1[x] == 'f')
+									armazena == 15;
+								else
+									armazena = recebe[x];
+							}
+						}
+					}
+				}
+			}
+			cout << "X: " << x << endl;
+			cout << "HEXA: " << hexa << endl;
+			cout << "POW: " << pow(16, x) << endl;
+			cout << "VALOR: " << valor1[x] << endl;
+			cout << endl << "ARMAZENA: " << armazena << endl;
+
+			
+			resultado = hexa*armazena; 
+			valorHex = valorHex+resultado;
+		}
+		cout << "  VALOR EM DECIMAL: " << valorHex;
 	};
 		
 };
