@@ -16,7 +16,7 @@ class Conversao{
 
 		~Conversao();
 
-	//Função para Conversão de Decimal para Binário
+	/*--------------------------Função para Conversão de Decimal para Binário--------------------------*/
 	void decimalBinario(int valor){
 		int *decimalBin = new int[valor];
 		int x, cont = 0;
@@ -31,43 +31,50 @@ class Conversao{
 			cout << "" << decimalBin[x];
 		}
 	};
+	/*--------------------------------------------------------------------------------------------------*/
 
 	
-	//Função para Conversão de Decimal para Hexadecimal
+	/*--------------------------Função para Conversão de Decimal para Hexadecimal--------------------------*/
 	void decimalHexadecimal(int valor){
-		int *decimalHex = new int[valor];
-		int x, cont = 0;
+		stringstream resultado;
+		int recebe;
+		string resultadoFinal;
 
 		while(valor != 0){
-			decimalHex[x] = valor%16;
+			recebe =  valor%16;
 			valor = valor/16;
-			x++;
-			cont++;
-		}
-
-		cout << "  VALOR EM HEXADECIMAL: ";
-		for(int x = cont-1; x >= 0; x--){
-			/*switch(decimalHex[x]){
+			resultado << recebe;
+			resultadoFinal = resultadoFinal+resultado.str();
+			switch(recebe){
 				case 10:
-					decimalHex[x] = 'a';
+					resultadoFinal = 'a';
 					break;
 				case 11:
-
+					resultadoFinal = 'b';
 					break;
 				case 12:
+					resultadoFinal = 'c';
 					break;
 				case 13:
+					resultadoFinal = 'd';
 					break;
 				case 14:
-					(char)decimalHex[x] = 'e';
+					resultadoFinal = 'e';
 					break;
 				case 15:
+					resultadoFinal = 'f';
 					break;
-
-			}*/
-			cout << "" << decimalHex[x];
+			}
+			resultado.str("");
+		}
+		int tamanho =  resultadoFinal.length();
+		cout << "  VALOR EM HEXADECIMAL: ";
+		for(int y = tamanho-1; y >= 0; y--){
+			cout << resultadoFinal[y];
 		}
 	};
+	/*--------------------------------------------------------------------------------------------------*/
+		
 
 	//Função para Conversão de Decimal para Octal
 	void decimalOctal(int valor){
@@ -109,6 +116,53 @@ class Conversao{
 		cout << "  VALOR EM DECIMAL: " << valorDec;
 	};
 
+	//Função para Conversão de Binário para Hexadecimal
+	void binarioOctal(string valor1){
+		int trio = 0, bin, atual = 0, controle = 3, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
+		
+		tamanho =  valor1.length();
+		int *recebe = new int[tamanho];
+
+		cout << "tamanho: " << tamanho << endl;
+		
+		cout << "  VALOR EM OCTAL: " << endl;
+		while(tamanho != cont){
+			for(int x = tamanho-1; x >= 0; x--){
+				bin = pow(2, y);
+				if((int)valor1[x] == 48)
+					armazena = 0;
+				else{
+					if((int)valor1[x] == 49)
+						armazena = 1;
+				}
+				cout << "BIN: " << bin << endl;
+				cout << "ARMAZENA: " << armazena << endl; 
+				potencia = bin*armazena;
+				valorFinal = valorFinal + potencia;
+				cout << "POTENCIA: " << potencia << endl;
+				cout << "VALORFINAL: " << valorFinal << endl;
+				cout << "VALOR EM CHAR: " << (int)valor1[x] << endl;
+				cout << "VALOR EM INT: " << valor1[x] << endl;
+				y++;
+				cout << "Y: " << y << endl << endl;
+				if(y == controle){
+					y = 0;
+					recebe[k] = valorFinal;
+					valorFinal = 0;
+					potencia = 0;
+					cout << "RECEBE: " << recebe[k] << endl << endl;
+					k++;
+				}
+				cont++;
+			}
+			//Falta Fazer a correção para mostrar os com valores impares e tratar quando for somente 0s
+			for(int x = 0; x < k; x++){
+				cout << endl << "RECEBE: " << recebe[k] << endl;
+			}
+		}
+		
+	}
+
 	//Função para Conversão de Hexadecimal para Decimal
 	void  hexadecimalDecimal(string valor1){
 		int tamanho =  valor1.length();
@@ -123,22 +177,22 @@ class Conversao{
 		for(int x = tamanho-1; x >= 0; x--){
 			hexa = pow(16, x);
 			
-			if(valor1[x] == 'a')
+			if((int)valor1[x] == 97)
 				armazena = 10;
 			else{
-				if(valor1[x] == 'b')
+				if((int)valor1[x] == 98)
 					armazena == 11;
 				else{
-					if(valor1[x] == 'c')
+					if((int)valor1[x] == 99)
 						armazena == 12;
 					else{
-						if(valor1[x] == 'd')
+						if((int)valor1[x] == 100)
 							armazena == 13;
 						else{
-							if(valor1[x] == 'e')
+							if((int)valor1[x] == 101)
 								armazena == 14;
 							else{
-								if(valor1[x] == 'f')
+								if((int)valor1[x] == 102)
 									armazena == 15;
 								else
 									armazena = recebe[x];
@@ -147,6 +201,7 @@ class Conversao{
 					}
 				}
 			}
+			cout << " VALOR FOR: " << (int)valor1[x] << endl;
 			cout << "X: " << x << endl;
 			cout << "HEXA: " << hexa << endl;
 			cout << "POW: " << pow(16, x) << endl;

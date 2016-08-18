@@ -12,7 +12,7 @@ int main(int argc, char const *argv[]){
         cout << "\t MENU DE OPÇÕES" << endl;
         cout << "-----------------------------------------------------------------------" << endl;
         cout << "  1 -- DECIMAL PARA BINÁRIO      ok |   7  -- HEXADECIMAL PARA DECIMAL" << endl;
-        cout << "  2 -- DECIMAL PARA HEXADECIMAL     |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
+        cout << "  2 -- DECIMAL PARA HEXADECIMAL  ok |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
         cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL" << endl;
         cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL" << endl;
         cout << "  5 -- BINÁRIO PARA HEXADECIMAL     |   11 -- OCTAL PARA HEXADECIMAL" << endl;
@@ -75,7 +75,10 @@ int main(int argc, char const *argv[]){
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE BINÁRIO X OCTAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->binarioOctal();
+                cout << "  INFORME UM VALOR EM BINÁRIO: ";
+                cin >> valor1;
+                cout << "-------------------------------------------------------" << endl;
+                conversao->binarioOctal(valor1);
                 cout << endl;
                 break;
             case 7:
