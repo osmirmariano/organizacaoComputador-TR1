@@ -61,6 +61,7 @@ int main(int argc, char const *argv[]){
                 cout << "  INFORME UM VALOR EM BINÁRIO: ";
                 cin >> valor1;
                 cout << "-------------------------------------------------------" << endl;
+                //
                 conversao->binarioDecimal(valor1);
                 cout << endl << endl;
                 break;
@@ -68,8 +69,11 @@ int main(int argc, char const *argv[]){
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE BINÁRIO X HEXADECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->binarioHexadecimal();
-                cout << endl;
+                cout << "  INFORME UM VALOR EM BINÁRIO: ";
+                cin >> valor1;
+                cout << "-------------------------------------------------------" << endl;
+                conversao->binarioHexadecimal(valor1);
+                cout << endl << endl;
                 break;
             case 6:
             	cout << "-------------------------------------------------------" << endl;
@@ -109,8 +113,15 @@ int main(int argc, char const *argv[]){
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE OCTAL X DECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->octalDecimal();
-                cout << endl;
+                cout << "  INFORME UM VALOR EM OCTAL: ";
+                cin >> valor1;                
+                cout << "-------------------------------------------------------" << endl;
+                // if(valor < 0 || valor > 7)
+                // 	cout << "ATENÇÃO, NA BASE OCTAL NÃO EXISTE ESSE VALOR " << endl;
+                // else{
+                conversao->octalDecimal(valor1);
+                // }
+                cout << endl << endl;
                 break;
             case 11:
             	cout << "-------------------------------------------------------" << endl;
