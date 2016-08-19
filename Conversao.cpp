@@ -121,15 +121,12 @@ class Conversao{
 
 	/*------------------------Função para Conversão de Binário para Hexadecimal-------------------------*/
 	void binarioHexadecimal(string valor1){
-		int trio = 0, bin, atual = 0, controle = 4, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
-		int mod, tam = 0;
+		int  bin, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
+		int mod = 0;
 		tamanho =  valor1.length();
 		int *recebe = new int[tamanho];
-		int a = 0;
 
-		cout << "  VALOR EM OCTAL: ";
 		while(tamanho != cont){
-
 			for(int x = tamanho-1; x >= 0; x--){
 				bin = pow(2, y);
 				if((int)valor1[x] == 48)
@@ -140,36 +137,20 @@ class Conversao{
 				}
 				potencia = bin*armazena;
 				valorFinal = valorFinal + potencia;
+				
+				recebe[k] = valorFinal;
 				y++;
-				if(y == controle){
-					a = a + y;
+				if(y == 4){
 					y = 0;
-					recebe[k] = valorFinal;
 					valorFinal = 0;
 					potencia = 0;
-					cout << recebe[k];
 					k++;
 				}
 				cont++;
 			}
-			if(a != tamanho){
-				y = 0;
-				valorFinal = 0;
-				for(int b = a; b < tamanho; b++){
-					bin = pow(2, y);
-					if((int)valor1[y] == 48)
-						armazena = 0;
-					else{
-						if((int)valor1[y] == 49)
-							armazena = 1;
-					}
-					potencia = bin*armazena;
-					valorFinal = valorFinal + potencia;
-					cout << "VALOR: " << valor1[y] << endl;
-					cout << "ARMAZENA: " << armazena << endl;
-					cout << "RECEBE: " << valorFinal << endl << endl;
-					y++;
-				}
+			cout << "  VALOR EM HEXADECIMAL: ";
+			for(int x = k-1; x >= 0; x--){
+				cout << recebe[x]; 
 			}
 		}
 	}
@@ -177,17 +158,17 @@ class Conversao{
 
 
 
-	//Função para Conversão de Binário para Hexadecimal
+	/*------------------------Função para Conversão de Binário para Hexadecimal-------------------------*/
 	void binarioOctal(string valor1){
-		int trio = 0, bin, atual = 0, controle = 3, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
-		int mod, tam = 0;
+		int  bin, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
+		int mod = 0;
 		tamanho =  valor1.length();
 		int *recebe = new int[tamanho];
-		int a = 0;
 
-		cout << "  VALOR EM OCTAL: ";
+		if(tamanho/3 != 0)
+			mod = tamanho/3+1;
+
 		while(tamanho != cont){
-
 			for(int x = tamanho-1; x >= 0; x--){
 				bin = pow(2, y);
 				if((int)valor1[x] == 48)
@@ -198,40 +179,26 @@ class Conversao{
 				}
 				potencia = bin*armazena;
 				valorFinal = valorFinal + potencia;
+				
+				recebe[k] = valorFinal;
 				y++;
-				if(y == controle){
-					a = a + y;
+				if(y == 3){
 					y = 0;
-					recebe[k] = valorFinal;
 					valorFinal = 0;
 					potencia = 0;
-					cout << recebe[k];
 					k++;
 				}
+
 				cont++;
 			}
-			if(a != tamanho){
-				y = 0;
-				valorFinal = 0;
-				for(int b = a; b < tamanho; b++){
-					bin = pow(2, y);
-					if((int)valor1[y] == 48)
-						armazena = 0;
-					else{
-						if((int)valor1[y] == 49)
-							armazena = 1;
-					}
-					potencia = bin*armazena;
-					valorFinal = valorFinal + potencia;
-					cout << "VALOR: " << valor1[y] << endl;
-					cout << "ARMAZENA: " << armazena << endl;
-					cout << "RECEBE: " << valorFinal << endl << endl;
-					y++;
-				}
+			cout << "  VALOR EM OCTAL: ";
+			for(int x = mod-1; x >= 0; x--){
+				cout << recebe[x]; 
 			}
 		}
-		
-	}
+	};
+	/*--------------------------------------------------------------------------------------------------*/
+
 
 	//Função para Conversão de Hexadecimal para Decimal
 	void  hexadecimalDecimal(string valor1){
