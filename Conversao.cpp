@@ -16,6 +16,9 @@ class Conversao{
 
 		~Conversao();
 
+	// void calDecBin (int valor){
+		
+	// }
 	/*--------------------------Função para Conversão de Decimal para Binário--------------------------*/
 	void decimalBinario(int valor){
 		int *decimalBin = new int[valor];
@@ -148,6 +151,7 @@ class Conversao{
 				}
 				cont++;
 			}
+			//Falta Transformar os valores correspondentes em as letras
 			cout << "  VALOR EM HEXADECIMAL: ";
 			for(int x = k-1; x >= 0; x--){
 				cout << recebe[x]; 
@@ -209,7 +213,7 @@ class Conversao{
 		for(int x = tamanho-1; x >= 0; x--){
 			if(valor1[x] == 'a'){
 				recebe = "10";
-				cout << "Entrou aqui " << recebe <<endl;
+
 				valor1[x] = recebe[x];
 			}
 			else{
@@ -250,13 +254,104 @@ class Conversao{
 		//cout << "  VALOR EM DECIMAL: " << valorHex;
 	};
 
-	void octalDecimal(int valor){
-		int x = 0;
-		while(valor < 0){
-			cout << "VALOR: " << valor << endl;
-			x++;
+	/*------------------------Função para Conversão de Octal para Decimal-------------------------*/
+	void octalDecimal(string valor1){
+		int tamanho = valor1.length();
+		int bin, potencia, valorFinal, armazena = 0, y = 0;
+
+		cout << "  VALOR EM DECIMAL: ";
+		for(int x = tamanho-1; x >= 0; x--){
+			bin = pow(8, y);
+			if((int)valor1[x] == 48)
+					armazena = 0;
+				else{
+					if((int)valor1[x] == 49)
+						armazena = 1;
+					else{
+						if((int)valor1[x] == 50)
+							armazena = 2;
+						else{
+							if((int)valor1[x] == 51)
+								armazena = 3;
+							else{
+								if((int)valor1[x] == 52)
+									armazena = 4;
+								else{
+									if((int)valor1[x] == 53)
+										armazena = 5;
+									else{
+										if((int)valor1[x] == 54)
+											armazena = 6;
+										else{
+											if((int)valor1[x] == 55)
+												armazena = 7;
+										}
+									}
+								}
+							}
+						}		
+					}
+				}
+			potencia = bin*armazena;
+			valorFinal = valorFinal + potencia;
+			y++;
 		}
-	}
+		cout << valorFinal << endl;
+	};
+	/*--------------------------------------------------------------------------------------------------*/
+
+	/*------------------------Função para Conversão de Octal para Binário------------------------------*/
+	void octalBinario (string valor1){
+		int tamanho = valor1.length();
+		int *decimalBin = new int[tamanho];
+		int armazena = 0, o = 0;
+
+		cout << "  VALOR EM BINÁRIO: ";
+		for(int x = tamanho-1; x >= 0; x--){
+			//cout << "VALOR: " << valor1[x] << endl;
+			if((int)valor1[x] == 48)
+				armazena = 0;
+				else{
+					if((int)valor1[x] == 49)
+						armazena = 1;
+					else{
+						if((int)valor1[x] == 50)
+							armazena = 2;
+						else{
+							if((int)valor1[x] == 51)
+								armazena = 3;
+							else{
+								if((int)valor1[x] == 52)
+									armazena = 4;
+								else{
+									if((int)valor1[x] == 53)
+										armazena = 5;
+									else{
+										if((int)valor1[x] == 54)
+											armazena = 6;
+										else{
+											if((int)valor1[x] == 55)
+												armazena = 7;
+										}
+									}
+								}
+							}
+						}		
+					}
+				}
+			while(armazena != 0){
+				decimalBin[o] = armazena%2;
+				armazena = armazena/2;
+				o++;
+				cout << "X: " << x << decimalBin[x];
+			}
+
+			for(int x = tamanho-1; x >= 0; x--){
+				cout << "" << decimalBin[x];
+			}
+		}
+	};
+	/*--------------------------------------------------------------------------------------------------*/
 
 	void hexadecimalBinario(string valor1){
 		int tamanho = valor1.length();

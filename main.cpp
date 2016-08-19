@@ -14,7 +14,7 @@ int main(int argc, char const *argv[]){
         cout << "  1 -- DECIMAL PARA BINÁRIO      ok |   7  -- HEXADECIMAL PARA DECIMAL" << endl;
         cout << "  2 -- DECIMAL PARA HEXADECIMAL  ok |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
         cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL" << endl;
-        cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL" << endl;
+        cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL        ok" << endl;
         cout << "  5 -- BINÁRIO PARA HEXADECIMAL + - |   11 -- OCTAL PARA HEXADECIMAL" << endl;
         cout << "  6 -- BINÁRIO PARA OCTAL        ok |   12 -- OCTAL PARA BINÁRIO" << endl;
         cout << "  0 -- SAIR " << endl;
@@ -113,12 +113,12 @@ int main(int argc, char const *argv[]){
                 cout << "\t CONVERSÃO DE OCTAL X DECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
                 cout << "  INFORME UM VALOR EM OCTAL: ";
-                cin >> valor;                
+                cin >> valor1;                
                 cout << "-------------------------------------------------------" << endl;
                 // if(valor < 0 || valor > 7)
                 // 	cout << "ATENÇÃO, NA BASE OCTAL NÃO EXISTE ESSE VALOR " << endl;
                 // else{
-                conversao->octalDecimal(valor);
+                conversao->octalDecimal(valor1);
                 // }
                 cout << endl << endl;
                 break;
@@ -133,7 +133,10 @@ int main(int argc, char const *argv[]){
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE OCTAL X BINÁRIO" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->octalBinario();
+                cout << "  INFORME UM VALOR EM OCTAL: ";
+                cin >> valor1;                
+                cout << "-------------------------------------------------------" << endl;
+                conversao->octalBinario(valor1);
                 cout << endl;
                 break;
             case 0: 
