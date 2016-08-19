@@ -114,12 +114,12 @@ int main(int argc, char const *argv[]){
                 cout << "\t CONVERSÃO DE OCTAL X DECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
                 cout << "  INFORME UM VALOR EM OCTAL: ";
-                cin >> valor1;                
+                cin >> valor;                
                 cout << "-------------------------------------------------------" << endl;
                 // if(valor < 0 || valor > 7)
                 // 	cout << "ATENÇÃO, NA BASE OCTAL NÃO EXISTE ESSE VALOR " << endl;
                 // else{
-                conversao->octalDecimal(valor1);
+                conversao->octalDecimal(valor);
                 // }
                 cout << endl << endl;
                 break;

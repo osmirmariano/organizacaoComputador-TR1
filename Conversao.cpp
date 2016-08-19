@@ -121,34 +121,13 @@ class Conversao{
 
 	/*------------------------Função para Conversão de Binário para Hexadecimal-------------------------*/
 	void binarioHexadecimal(string valor1){
-
-	}
-	/*--------------------------------------------------------------------------------------------------*/
-
-
-
-	//Função para Conversão de Binário para Hexadecimal
-	void binarioOctal(string valor1){
-		int trio = 0, bin, atual = 0, controle = 3, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
+		int trio = 0, bin, atual = 0, controle = 4, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
 		int mod, tam = 0;
 		tamanho =  valor1.length();
 		int *recebe = new int[tamanho];
-		//cout << "tamanho: " << tamanho << endl;
-		if(tamanho/3 != 0){
-			mod =  tamanho%3;
-			if(mod == 1)
-				mod = 2;
-			else{
-				mod = 1;
-			}
-			for(int x = 1; x <= mod; x++){
-				valor1[tamanho+x] = '0';
-			}
-			tamanho = tamanho+mod;
-			//cout << "TAMANHO: " << tamanho << endl;
-		}
-		
-		//cout << "  VALOR EM OCTAL: " << endl;
+		int a = 0;
+
+		cout << "  VALOR EM OCTAL: ";
 		while(tamanho != cont){
 
 			for(int x = tamanho-1; x >= 0; x--){
@@ -162,65 +141,95 @@ class Conversao{
 				potencia = bin*armazena;
 				valorFinal = valorFinal + potencia;
 				y++;
-				// cout << "BIN: " << bin << endl;
-				// cout << "POTENCIA: " << potencia << endl;
-				cout << "VALOR: " << valor1[x] << endl;
-				// cout << "VALORFINAL: " << valorFinal << endl;
-				// cout << "Y: " << y << endl << endl;
 				if(y == controle){
+					a = a + y;
 					y = 0;
 					recebe[k] = valorFinal;
 					valorFinal = 0;
 					potencia = 0;
-					cout << "RECEBE: " << recebe[k] << endl << endl;
+					cout << recebe[k];
 					k++;
-					//cout << "K: " << k << endl;
 				}
 				cont++;
 			}
-			//cout << "TESTE Y: " << y << endl << endl;
-			
-			//cout << "TAMANHO MODIFICADO: " << a << endl;
-			/*//Falta Fazer a correção para mostrar os com valores impares e tratar quando for somente 0s
-			for(int x = 0; x < k; x++){
-				cout << endl << "RECEBE: " << recebe[k] << endl;
-			}*/
+			if(a != tamanho){
+				y = 0;
+				valorFinal = 0;
+				for(int b = a; b < tamanho; b++){
+					bin = pow(2, y);
+					if((int)valor1[y] == 48)
+						armazena = 0;
+					else{
+						if((int)valor1[y] == 49)
+							armazena = 1;
+					}
+					potencia = bin*armazena;
+					valorFinal = valorFinal + potencia;
+					cout << "VALOR: " << valor1[y] << endl;
+					cout << "ARMAZENA: " << armazena << endl;
+					cout << "RECEBE: " << valorFinal << endl << endl;
+					y++;
+				}
+			}
 		}
+	}
+	/*--------------------------------------------------------------------------------------------------*/
 
-		// cout << "  VALOR EM OCTAL: " << endl;
-		// while(tamanho != cont){
 
-		// 	for(int x = tamanho-1; x >= 0; x--){
-		// 		bin = pow(2, y);
-		// 		if((int)valor1[x] == 48)
-		// 			armazena = 0;
-		// 		else{
-		// 			if((int)valor1[x] == 49)
-		// 				armazena = 1;
-		// 		}
-		// 		potencia = bin*armazena;
-		// 		valorFinal = valorFinal + potencia;
-		// 		y++;
-		// 		cout << "Y: " << y << endl << endl;
-		// 		if(y == controle){
-		// 			y = 0;
-		// 			recebe[k] = valorFinal;
-		// 			valorFinal = 0;
-		// 			potencia = 0;
-		// 			cout << "RECEBE: " << recebe[k] << endl << endl;
-		// 			k++;
-		// 			cout << "K: " << k << endl;
-		// 		}
-		// 		cont++;
-		// 	}
-		// 	cout << "TESTE Y: " << y << endl << endl;
-			
-		// 	cout << "TAMANHO MODIFICADO: " << a << endl;
-		// 	/*//Falta Fazer a correção para mostrar os com valores impares e tratar quando for somente 0s
-		// 	for(int x = 0; x < k; x++){
-		// 		cout << endl << "RECEBE: " << recebe[k] << endl;
-		// 	}*/
-		// }
+
+	//Função para Conversão de Binário para Hexadecimal
+	void binarioOctal(string valor1){
+		int trio = 0, bin, atual = 0, controle = 3, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
+		int mod, tam = 0;
+		tamanho =  valor1.length();
+		int *recebe = new int[tamanho];
+		int a = 0;
+
+		cout << "  VALOR EM OCTAL: ";
+		while(tamanho != cont){
+
+			for(int x = tamanho-1; x >= 0; x--){
+				bin = pow(2, y);
+				if((int)valor1[x] == 48)
+					armazena = 0;
+				else{
+					if((int)valor1[x] == 49)
+						armazena = 1;
+				}
+				potencia = bin*armazena;
+				valorFinal = valorFinal + potencia;
+				y++;
+				if(y == controle){
+					a = a + y;
+					y = 0;
+					recebe[k] = valorFinal;
+					valorFinal = 0;
+					potencia = 0;
+					cout << recebe[k];
+					k++;
+				}
+				cont++;
+			}
+			if(a != tamanho){
+				y = 0;
+				valorFinal = 0;
+				for(int b = a; b < tamanho; b++){
+					bin = pow(2, y);
+					if((int)valor1[y] == 48)
+						armazena = 0;
+					else{
+						if((int)valor1[y] == 49)
+							armazena = 1;
+					}
+					potencia = bin*armazena;
+					valorFinal = valorFinal + potencia;
+					cout << "VALOR: " << valor1[y] << endl;
+					cout << "ARMAZENA: " << armazena << endl;
+					cout << "RECEBE: " << valorFinal << endl << endl;
+					y++;
+				}
+			}
+		}
 		
 	}
 
@@ -274,19 +283,33 @@ class Conversao{
 		//cout << "  VALOR EM DECIMAL: " << valorHex;
 	};
 
-	void octalDecimal(string valor1){
-		int tamanho = valor1.length();
-		int octa, potencia, valorFinal, conversao[tamanho];
-
-		for(int x = 0; x < tamanho; x++){
-		//for(int x = tamanho-1; x >= 0; x--){
-			conversao[x] = (valor1[x]);
-			// octa = pow(8, x);
-			// potencia = octa*valor1[x];
-			// cout << "P: " << potencia << endl; 
-			// valorFinal = valorFinal+potencia;
-			cout << "VALOR: " << conversao[x] << endl; 
+	void octalDecimal(int valor){
+		int x = 0;
+		while(valor < 0){
+			cout << "VALOR: " << valor << endl;
+			x++;
 		}
 	}
+
+	void hexadecimalBinario(string valor1){
+		int tamanho = valor1.length();
+		int *hexadecimalBin = new int[tamanho];
+		int resultado;
+
+		for(int x = 0; x < tamanho; x++){
+			if(valor1[x] == 'a'){
+				//resultado = 10/2;
+				hexadecimalBin[x] = 10%2;
+				valor = valor/2;
+				x++;
+				cont++;	
+			}
+			else if (valor1[x] == 'b'){
+				resultado = 11;
+			}
+		}
+	};
+
+
 		
 };
