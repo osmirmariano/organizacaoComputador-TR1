@@ -64,6 +64,7 @@ int main(int argc, char const *argv[]){
                 conversao->binarioDecimal(valor1);
                 cout << endl << endl;
                 break;
+            
             case 5:
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE BINÁRIO X HEXADECIMAL" << endl;
@@ -74,6 +75,7 @@ int main(int argc, char const *argv[]){
                 conversao->binarioHexadecimal(valor1);
                 cout << endl << endl;
                 break;
+                
             case 6:
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE BINÁRIO X OCTAL" << endl;
@@ -84,6 +86,7 @@ int main(int argc, char const *argv[]){
                 conversao->binarioOctal(valor1);
                 cout << endl;
                 break;
+                
             case 7:
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE HEXADECIMAL X DECIMAL" << endl;

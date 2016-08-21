@@ -121,13 +121,74 @@ class Conversao{
 	};
 	/*--------------------------------------------------------------------------------------------------*/
 
+		
+		
+
+
 
 	/*------------------------Função para Conversão de Binário para Hexadecimal-------------------------*/
 	void binarioHexadecimal(string valor1){
+		int deci = 0, valorDec = 0, teste = 0, armazena, recebe;
+		int tamanho =  valor1.length();
+		string dados, resultadoFinal;
+		stringstream resultado;
+
+		for(int x = tamanho-1; x >= 0; x--){
+			dados += valor1[x];
+		}
+		for(int x = tamanho-1; x >= 0; x--){
+			deci = pow(2, x);
+			if((int)dados[x] == 48)
+				armazena = 0;
+			else{
+				if((int)dados[x] == 49)
+				armazena = 1;
+			}
+			teste = deci*armazena;
+			valorDec = valorDec + teste;
+		}
+		
+		int valor = valorDec;
+		while(valor != 0){
+			recebe =  valor%16;
+			valor = valor/16;
+			resultado << recebe;
+			resultadoFinal = resultadoFinal+resultado.str();
+			switch(recebe){
+				case 10:
+					resultadoFinal = 'a';
+					break;
+				case 11:
+					resultadoFinal = 'b';
+					break;
+				case 12:
+					resultadoFinal = 'c';
+					break;
+				case 13:
+					resultadoFinal = 'd';
+					break;
+				case 14:
+					resultadoFinal = 'e';
+					break;
+				case 15:
+					resultadoFinal = 'f';
+					break;
+			}
+			resultado.str("");
+		}
+		int tam =  resultadoFinal.length();
+		cout << "  VALOR EM HEXADECIMAL: ";
+		for(int y = tamanho-1; y >= 0; y--){
+			cout << resultadoFinal[y];
+		}
+	}
+	/*void binarioHexadecimal(string valor1){
 		int  bin, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
-		int mod = 0;
 		tamanho =  valor1.length();
 		int *recebe = new int[tamanho];
+		int *recebeDados = new int[tamanho];
+		string resultadoFinal, teste;
+		stringstream conversao;
 
 		while(tamanho != cont){
 			for(int x = tamanho-1; x >= 0; x--){
@@ -140,8 +201,8 @@ class Conversao{
 				}
 				potencia = bin*armazena;
 				valorFinal = valorFinal + potencia;
-				
 				recebe[k] = valorFinal;
+				
 				y++;
 				if(y == 4){
 					y = 0;
@@ -151,13 +212,23 @@ class Conversao{
 				}
 				cont++;
 			}
+
+			
 			//Falta Transformar os valores correspondentes em as letras
 			cout << "  VALOR EM HEXADECIMAL: ";
-			for(int x = k-1; x >= 0; x--){
-				cout << recebe[x]; 
+			for(int x = 0; x < k+1; x++){
+				recebeDados[x] = recebe[x];
+			}
+			
+			for(int x = 0; x < cont; x++){
+				conversao << recebeDados[x];
+				resultadoFinal = conversao.str();
+				cout << resultadoFinal[x];
+				// oi++;
+				// cout << oi << endl;
 			}
 		}
-	}
+	}*/
 	/*--------------------------------------------------------------------------------------------------*/
 
 
@@ -165,12 +236,8 @@ class Conversao{
 	/*------------------------Função para Conversão de Binário para Hexadecimal-------------------------*/
 	void binarioOctal(string valor1){
 		int  bin, y = 0, armazena, potencia, valorFinal = 0, tamanho, k = 0, cont = 0;
-		int mod = 0;
 		tamanho =  valor1.length();
 		int *recebe = new int[tamanho];
-
-		if(tamanho/3 != 0)
-			mod = tamanho/3+1;
 
 		while(tamanho != cont){
 			for(int x = tamanho-1; x >= 0; x--){
@@ -183,7 +250,6 @@ class Conversao{
 				}
 				potencia = bin*armazena;
 				valorFinal = valorFinal + potencia;
-				
 				recebe[k] = valorFinal;
 				y++;
 				if(y == 3){
@@ -192,11 +258,10 @@ class Conversao{
 					potencia = 0;
 					k++;
 				}
-
 				cont++;
 			}
 			cout << "  VALOR EM OCTAL: ";
-			for(int x = mod-1; x >= 0; x--){
+			for(int x = k-1; x >= 0; x--){
 				cout << recebe[x]; 
 			}
 		}
