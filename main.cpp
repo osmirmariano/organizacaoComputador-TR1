@@ -8,20 +8,20 @@ int main(int argc, char const *argv[]){
 	string valor1;
 	Conversao *conversao = new Conversao();
     do{
-        cout << endl << "-----------------------------------------------------------------------" << endl;
-        cout << "\t MENU DE OPÇÕES" << endl;
-        cout << "-----------------------------------------------------------------------" << endl;
-        cout << "  1 -- DECIMAL PARA BINÁRIO      ok |   7  -- HEXADECIMAL PARA DECIMAL" << endl;
-        cout << "  2 -- DECIMAL PARA HEXADECIMAL  ok |   8  -- HEXADECIMAL PARA BINÁRIO" << endl;
-        cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL" << endl;
-        cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL        ok" << endl;
-        cout << "  5 -- BINÁRIO PARA HEXADECIMAL + - |   11 -- OCTAL PARA HEXADECIMAL" << endl;
-        cout << "  6 -- BINÁRIO PARA OCTAL        ok |   12 -- OCTAL PARA BINÁRIO" << endl;
-        cout << "  0 -- SAIR " << endl;
-        cout << "-----------------------------------------------------------------------" << endl;
+        cout << endl << "----------------------------------------------------------------------------" << endl;
+        cout << "                              MENU DE OPÇÕES" << endl;
+        cout << "----------------------------------------------------------------------------" << endl;
+        cout << "  1 -- DECIMAL PARA BINÁRIO      ok |   7  -- HEXADECIMAL PARA DECIMAL     |" << endl;
+        cout << "  2 -- DECIMAL PARA HEXADECIMAL  ok |   8  -- HEXADECIMAL PARA BINÁRIO     |" << endl;
+        cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL       |" << endl;
+        cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL        ok |" << endl;
+        cout << "  5 -- BINÁRIO PARA HEXADECIMAL -ok |   11 -- OCTAL PARA HEXADECIMAL    ok |" << endl;
+        cout << "  6 -- BINÁRIO PARA OCTAL        ok |   12 -- OCTAL PARA BINÁRIO           |" << endl;
+        cout << "  0 -- SAIR                                                                |" << endl;
+        cout << "----------------------------------------------------------------------------" << endl;
         cout << "  OPÇÃO: ";
         cin >> op;
-        cout << "-----------------------------------------------------------------------" << endl << endl;
+        cout << "----------------------------------------------------------------------------" << endl << endl;
 
         switch(op){
             case 1:
@@ -118,19 +118,20 @@ int main(int argc, char const *argv[]){
                 cout << "  INFORME UM VALOR EM OCTAL: ";
                 cin >> valor1;                
                 cout << "-------------------------------------------------------" << endl;
-                // if(valor < 0 || valor > 7)
-                // 	cout << "ATENÇÃO, NA BASE OCTAL NÃO EXISTE ESSE VALOR " << endl;
-                // else{
                 conversao->octalDecimal(valor1);
-                // }
                 cout << endl << endl;
                 break;
+
             case 11:
             	cout << "-------------------------------------------------------" << endl;
                 cout << "\t CONVERSÃO DE OCTAL X HEXADECIMAL" << endl;
                 cout << "-------------------------------------------------------" << endl;
-                //cout << " VALOR: " <<;  //conversao->octalHexadecimal();
-                cout << endl;
+                cout << "  INFORME UM VALOR EM OCTAL: ";
+                cin >> valor1;                
+                cout << "-------------------------------------------------------" << endl;
+                conversao->octalHexadecimal(valor1);
+                cout << endl << endl;
+
                 break;
             case 12:
             	cout << "-------------------------------------------------------" << endl;
