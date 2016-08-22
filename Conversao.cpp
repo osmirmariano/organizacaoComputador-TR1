@@ -2,16 +2,18 @@
 #include <string>
 #include <sstream>
 #include <math.h>
+#include <cstdlib>
+#define max 20
 
 using namespace std;
 
 class Conversao{
 	public:
-		int valor, *decimalBin, *decimalHex, cont;
+		int valor, cont;
 	public:
 		Conversao(){
 			this->valor = valor;
-			cont = 0;
+			this->cont = 0;
 		}
 
 		~Conversao();
@@ -21,7 +23,7 @@ class Conversao{
 	// }
 	/*--------------------------Função para Conversão de Decimal para Binário--------------------------*/
 	void decimalBinario(int valor){
-		int *decimalBin = new int[valor];
+		int *decimalBin = new int[max];
 		int x, cont = 0;
 		while(valor != 0){
 			decimalBin[x] = valor%2;
@@ -29,6 +31,7 @@ class Conversao{
 			x++;
 			cont++;
 		}
+		
 		cout << "  VALOR EM BINÁRIO: ";
 		for(int x = cont-1; x >= 0; x--){
 			cout << "" << decimalBin[x];
@@ -408,10 +411,8 @@ class Conversao{
 	/*------------------------Função para Conversão de Octal para Binário------------------------------*/
 	void octalBinario (string valor1){		
 		int tamanho = valor1.length();
-		int bin, potencia, valorFinal, armazena = 0, y = 0, z = 0, cont = 0;
-		int *OcatlBin = new int[tamanho];
+		int bin, potencia, valorFinal, armazena = 0, y = 0;
 
-		cout << "  VALOR EM DECIMAL: ";
 		for(int x = tamanho-1; x >= 0; x--){
 			bin = pow(8, y);
 			if((int)valor1[x] == 48)
@@ -448,25 +449,28 @@ class Conversao{
 			valorFinal = valorFinal + potencia;
 			y++;
 		}
-		
-		cout << (int)valorFinal << endl;
 
-		//Falta Terminar ainda, 
-		// int rest;
-		// rest = valorFinal;
-		// cout << rest << endl;
-		// while(rest != 0){
-		// 	OcatlBin[z] = rest%2;
-		//  	rest = rest/2;
-		//  	z++;
-		//  	cont++;
-		// }
-		// cout << "  VALOR EM BINÁRIO: ";
-		// for(int x = cont-1; x >= 0; x--){
-		// 	cout << "" << OcatlBin[x];
-		// }
-		// //decimalBin.clear();
-		// valorFinal = 0;
+		int rest, z = 0;
+		int octalBin;
+		string  result;
+		stringstream conversao;
+		rest = valorFinal;
+	
+		while(rest != 0){
+			octalBin = rest%2;
+			rest = rest/2;
+			conversao << octalBin;
+			result = conversao.str();
+			z++;
+			cont++;
+		}
+
+		cout << "  VALOR EM BINÁRIO: ";
+		for(int o = cont-1; o >= 0; o--){
+			cout << "" << result[o];
+		}
+		valorFinal = 0;
+		result.clear();
 	};
 	/*--------------------------------------------------------------------------------------------------*/
 
@@ -538,6 +542,71 @@ class Conversao{
 		}
 	};
 
+	/*------------------------Função para Conversão de Hexadecimal para Octal-------------------------*/
+	void hexadecimalOctal(string valor1){
+		int tamanho = valor1.length();
+		int resultado = 0, bin = 0, potencia = 0, resultadoFinal = 0, y = 0;
+
+		for(int x = tamanho-1; x >= 0; x--){
+			bin = pow(16, y);
+			if(valor1[x] == 0)
+			 	resultado = 0;
+			else if(valor1[x] == '1')
+				resultado = 1;
+			else if(valor1[x] == '2')
+				resultado = 2;
+			else if(valor1[x] == '3')
+				resultado = 3;
+			else if(valor1[x] == '4')
+				resultado = 4;
+			else if(valor1[x] == '5')
+				resultado = 5;
+			else if(valor1[x] == '6')
+				resultado = 6;
+			else if(valor1[x] == '7')
+				resultado = 7;
+			else if(valor1[x] == '8')
+				resultado = 8;
+			else if(valor1[x] == '9')
+				resultado = 9;
+			else if((int)valor1[x] == 97)
+				resultado = 10;
+			else if((int)valor1[x] == 98)
+				resultado = 11;
+			else if((int)valor1[x] == 99)
+				resultado = 12;
+			else if((int)valor1[x] == 100)
+				resultado = 13;
+			else if((int)valor1[x] == 101)
+				resultado = 14;
+			else if((int)valor1[x] == 102)
+				resultado = 15;
+
+			potencia = bin*resultado;
+			resultadoFinal = resultadoFinal + potencia;
+			y++;			
+		}
+		int valor = resultadoFinal;
+		int decimalOct;
+		string result;
+		stringstream conversao;
+		int z, cont = 0;
+
+		while(valor != 0){
+			decimalOct = valor%8;
+			valor = valor/8;
+			conversao << decimalOct;
+			result = conversao.str();
+			z++;
+			cont++;
+		}
+
+		cout << "  VALOR EM OCTAL: ";
+		for(int o = cont-1; o >= 0; o--){
+			cout << "" << result[o];
+		}
+	}
+	/*--------------------------------------------------------------------------------------------------*/
 
 		
 };
