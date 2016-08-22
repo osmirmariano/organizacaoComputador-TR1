@@ -463,14 +463,16 @@ class Conversao{
 			result = conversao.str();
 			z++;
 			cont++;
+			
 		}
-
+		conversao.str("");
 		cout << "  VALOR EM BINÁRIO: ";
 		for(int o = cont-1; o >= 0; o--){
 			cout << "" << result[o];
 		}
-		valorFinal = 0;
 		result.clear();
+		valorFinal = 0;
+
 	};
 	/*--------------------------------------------------------------------------------------------------*/
 

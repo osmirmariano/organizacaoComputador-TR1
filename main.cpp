@@ -16,7 +16,7 @@ int main(int argc, char const *argv[]){
         cout << "  3 -- DECIMAL PARA OCTAL        ok |   9  -- HEXADECIMAL PARA OCTAL    ok |" << endl;
         cout << "  4 -- BINÁRIO PARA DECIMAL      ok |   10 -- OCTAL PARA DECIMAL        ok |" << endl;
         cout << "  5 -- BINÁRIO PARA HEXADECIMAL -ok |   11 -- OCTAL PARA HEXADECIMAL    ok |" << endl;
-        cout << "  6 -- BINÁRIO PARA OCTAL        ok |   12 -- OCTAL PARA BINÁRIO        ok |" << endl;
+        cout << "  6 -- BINÁRIO PARA OCTAL        ok |   12 -- OCTAL PARA BINÁRIO       -ok |" << endl;
         cout << "  0 -- SAIR                                                                |" << endl;
         cout << "----------------------------------------------------------------------------" << endl;
         cout << "  OPÇÃO: ";
