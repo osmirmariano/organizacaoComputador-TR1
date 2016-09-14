@@ -10,6 +10,7 @@ class Conversao{
 	public: 
 		int valor, cont, tamanho, contador, decimalBin;
 		string resultadoBin, resultadoOct, resultadoHex, resultadoDec, resultadoBinOct, resultadoHexDec, valorhex;
+		string armazena;
 
 	public:
 		Conversao(){
@@ -42,6 +43,7 @@ class Conversao{
 			this->resultadoDec =  resultadoDec;
 			this->resultadoBinOct = resultadoBinOct;
 			this->resultadoHexDec = resultadoHexDec;
+			this->armazena = " ";
 		};
 		~Conversao();
 		
@@ -106,17 +108,19 @@ class Conversao{
 						resultadoHex = 'f';
 						break;
 				}
+				armazena += resultadoHex; 
 				resultado.str("");
+				resultadoHex = "";
 			}
-		};	
+		};
 
 		//Função para Imprimir Conversão de Decimal para Hexadecimal
 		void imprimirDecimalHexidacimal(){
-			int tamanho =  resultadoHex.length();
 			cout << "  VALOR EM HEXADECIMAL: ";
-			for(int y = tamanho-1; y >= 0; y--){
-				cout << resultadoHex[y];
+			for(int y = armazena.length(); y >= 0; y--){
+				cout << armazena[y];
 			}
+			armazena = "";
 		};
 		/*----------------------------------------------------------------------------------------------------*/
 
@@ -262,29 +266,29 @@ class Conversao{
 			conversao << valor;
 			resultadoDec = conversao.str();
 
-			int tamanho = resultadoDec.length();
-			int bin, potencia, valorFinalOctDec = 0, armazena = 0, y = 0;
+			int bin, potencia, valorFinalOctDec = 0, armazenaDados = 0, y = 0;
 
-			for(int x = tamanho-1; x >= 0; x--){
+			for(int x = resultadoDec.length()-1; x >= 0; x--){
 				bin = pow(8, y);
 				if((int)resultadoDec[x] == 48)
-					armazena = 0;
+					armazenaDados = 0;
 				else if((int)resultadoDec[x] == 49)
-					armazena = 1;
+					armazenaDados = 1;
 				else if((int)resultadoDec[x] == 50)
-					armazena = 2;
+					armazenaDados = 2;
 				else if((int)resultadoDec[x] == 51)
-					armazena = 3;
+					armazenaDados = 3;
 				else if((int)resultadoDec[x] == 52)
-					armazena = 4;
+					armazenaDados = 4;
 				else if((int)resultadoDec[x] == 53)
-					armazena = 5;
+					armazenaDados = 5;
 				else if((int)resultadoDec[x] == 54)
-					armazena = 6;
+					armazenaDados = 6;
 				else if((int)resultadoDec[x] == 55)
-					armazena = 7;
+					armazenaDados = 7;
 				
-				potencia = bin*armazena;
+
+				potencia = bin*armazenaDados;
 				valorFinalOctDec = valorFinalOctDec + potencia;
 				y++;
 			}
